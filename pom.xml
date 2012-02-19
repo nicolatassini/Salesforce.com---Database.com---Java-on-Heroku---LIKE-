@@ -19,6 +19,15 @@
 	</properties>
 
 	<dependencies>
+		
+		<!-- Search add-ons -->
+		<dependency>
+			<groupId>com.indextank</groupId>
+			<artifactId>indextank-java</artifactId>
+			<version>1.0.9</version
+		</dependency>
+		<!-- Search add-ons -->
+		
 		<dependency>
 		    <groupId>org.mortbay.jetty</groupId>
 		    <artifactId>jsp-2.1-glassfish</artifactId>
