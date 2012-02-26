@@ -35,19 +35,19 @@ public class SearchService {
 		Index index = initIndex();
 		List<Document> documents = new ArrayList<Document>();
 
-		Map<String, String> fields1 = new HashMap<String, String>();
-		fields1.put("text", "document 1 text disema test nik");
-
 		// Document is built with:
 		// - String docId
 		// - Map<String, String> fields
 		// - Map<Integer, Float> variables 
 		// - Map<String, String> facetingCategories
+		
+		Map<String, String> fields1 = new HashMap<String, String>();
+		fields1.put("text", "document 1 text disema test nik");
 		Document document1 = new Document("1", fields1, null, null);
 		documents.add(document1); 
 
 		Map<String, String> fields2 = new HashMap<String, String>();
-		fields1.put("text", "document 2 text");
+		fields2.put("text", "document 2 text");
 		Map<Integer, Float> variables2 = new HashMap<Integer, Float>();
 		variables2.put(1, 0.4f);
 		Document document2 = new Document("2", fields2, variables2, null);
