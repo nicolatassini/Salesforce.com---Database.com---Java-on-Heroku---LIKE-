@@ -26,4 +26,6 @@
 	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
+	<bean id="searchService" class="com.tquila.demo.service.SearchService" />
+	
 </beans>
