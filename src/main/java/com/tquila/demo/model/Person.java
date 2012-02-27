@@ -25,9 +25,15 @@ public class Person implements Serializable {
 
 	@Column
 	private String address;
+	
+	@Column
+	private String city;
 
-	public Person() {
-	}
+	@Column
+	private String country;
+
+	
+	public Person() {}
 
 	public Person(String firstName, String lastName) {
 		super();
@@ -111,6 +117,22 @@ public class Person implements Serializable {
 		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 }

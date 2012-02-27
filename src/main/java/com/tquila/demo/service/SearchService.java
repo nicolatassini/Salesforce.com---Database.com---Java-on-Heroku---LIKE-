@@ -28,10 +28,16 @@ public class SearchService {
 
 	public Index initIndex() {
 		IndexTankClient client = new IndexTankClient("http://:GwWoDRbSkWaKIj@dhyja.api.searchify.com");
-		return client.getIndex("idx");
+		return client.getIndex("sfdc_index");
 	}
 	
 	public boolean batchIndexing() {
+		Index index = initIndex();
+		List<Document> documents = new ArrayList<Document>();
+		return true;
+	}
+	
+	public boolean batchIndexingOld() {
 		Index index = initIndex();
 		List<Document> documents = new ArrayList<Document>();
 
