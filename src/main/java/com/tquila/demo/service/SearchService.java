@@ -45,6 +45,7 @@ public class SearchService {
 		
 		for(Person person : personDao.getPeople()) {
 			fields = new HashMap<String, String>();
+			fields.put("text", person.getFirstName() + " " + person.getLastName());
 			fields.put("firstname", person.getFirstName());
 			fields.put("lastname", person.getLastName());
 			fields.put("address", person.getAddress());
