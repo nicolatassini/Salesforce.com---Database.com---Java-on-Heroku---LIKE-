@@ -11,12 +11,15 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.flaptor.indextank.apiclient.Index;
 import com.flaptor.indextank.apiclient.IndexDoesNotExistException;
 import com.flaptor.indextank.apiclient.IndexTankClient;
 import com.flaptor.indextank.apiclient.IndexTankClient.BatchResults;
 import com.flaptor.indextank.apiclient.IndexTankClient.Document;
+import com.tquila.demo.dao.PersonDao;
+import com.tquila.demo.model.Person;
 
 /**
  * @author nicolatassini
@@ -25,7 +28,10 @@ import com.flaptor.indextank.apiclient.IndexTankClient.Document;
 public class SearchService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchService.class); 
-
+	
+	@Autowired
+	private PersonDao personDao;
+	
 	public Index initIndex() {
 		IndexTankClient client = new IndexTankClient("http://:GwWoDRbSkWaKIj@dhyja.api.searchify.com");
 		return client.getIndex("sfdc_index");
@@ -34,7 +40,32 @@ public class SearchService {
 	public boolean batchIndexing() {
 		Index index = initIndex();
 		List<Document> documents = new ArrayList<Document>();
-		return true;
+		Map<String, String> fields;
+		Document document;
+		
+		for(Person person : personDao.getPeople()) {
+			fields = new HashMap<String, String>();
+			fields.put("firstname", person.getFirstName());
+			fields.put("lastname", person.getLastName());
+			fields.put("address", person.getAddress());
+			fields.put("city", person.getCity());
+			fields.put("country", person.getCountry());
+			
+			document = new Document(person.getId(), fields, null, null);
+			documents.add(document);
+		}
+		
+		try {
+			BatchResults results = index.addDocuments(documents);
+			logger.info("SearchService.batchIndexing: results : " + results.getFailedDocuments());
+			return true;
+		} catch (IOException e) {
+			logger.error("SearchService.batchIndexing: IO error", e);
+			return false;
+		} catch (IndexDoesNotExistException e) {
+			logger.error("SearchService.batchIndexing: IndexDoesNotExist error", e);
+			return false;
+		}
 	}
 	
 	public boolean batchIndexingOld() {
