@@ -31,6 +31,8 @@ public class Person implements Serializable {
 
 	@Column
 	private String country;
+	
+	protected java.util.Calendar createdDate;
 
 	
 	public Person() {}
@@ -133,6 +135,14 @@ public class Person implements Serializable {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public java.util.Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(java.util.Calendar createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }

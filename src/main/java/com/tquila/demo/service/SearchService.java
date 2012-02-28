@@ -27,6 +27,13 @@ import com.tquila.demo.model.Person;
  */
 public class SearchService {
 	
+	/*
+	 * next steps:
+	 * 1. carica tanti dati
+	 * 2. VF page / controller per fare la ricerca
+	 *  
+	 */
+	
 	private static final Logger logger = LoggerFactory.getLogger(SearchService.class); 
 	
 	@Autowired
@@ -51,6 +58,7 @@ public class SearchService {
 			fields.put("address", person.getAddress());
 			fields.put("city", person.getCity());
 			fields.put("country", person.getCountry());
+			fields.put("timestamp", "" + (person.getCreatedDate().getTimeInMillis() / 1000L));
 			
 			document = new Document(person.getId(), fields, null, null);
 			documents.add(document);
