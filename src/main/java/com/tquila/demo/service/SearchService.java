@@ -35,6 +35,7 @@ public class SearchService {
 	
 	/*
 	 * next steps:
+	 * D0. usate le var di sistema
 	 * 1. carica dati e rivedi il modello DB
 	 * 2. aggiorna relazioni orm e indicizzazione
 	 * 3. API Restful per ricercare
