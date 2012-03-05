@@ -18,30 +18,41 @@ import com.flaptor.indextank.apiclient.IndexDoesNotExistException;
 import com.flaptor.indextank.apiclient.IndexTankClient;
 import com.flaptor.indextank.apiclient.IndexTankClient.BatchResults;
 import com.flaptor.indextank.apiclient.IndexTankClient.Document;
+import com.flaptor.indextank.apiclient.IndexTankClient.Query;
+import com.flaptor.indextank.apiclient.IndexTankClient.SearchResults;
+import com.flaptor.indextank.apiclient.InvalidSyntaxException;
 import com.tquila.demo.dao.PersonDao;
 import com.tquila.demo.model.Person;
 
 /**
  * @author nicolatassini
- *
+ * 
+ * Heroku init script:
+ * heroku config:add SEARCHIFY_PRIVATE_URL= SEARCHIFY_INDEX_NAME=
+ * 
  */
 public class SearchService {
 	
 	/*
 	 * next steps:
-	 * 1. carica tanti dati
-	 * 2. VF page / controller per fare la ricerca
-	 *  
+	 * 1. carica dati e rivedi il modello DB
+	 * 2. aggiorna relazioni orm e indicizzazione
+	 * 3. API Restful per ricercare
+	 * 4. Plugin JQuery per ricercare (dentro anche autocompleter)
+	 * 5. Applica plugin pagina Java
+	 * 2. Applica plugin VF page / controller per fare la ricerca
 	 */
 	
-	private static final Logger logger = LoggerFactory.getLogger(SearchService.class); 
+	private static final Logger logger = LoggerFactory.getLogger(SearchService.class);
+	private static final String SEARCHIFY_PRIVATE_URL = "SEARCHIFY_PRIVATE_URL";
+	private static final String SEARCHIFY_INDEX_NAME = "SEARCHIFY_INDEX_NAME";
 	
 	@Autowired
 	private PersonDao personDao;
 	
 	public Index initIndex() {
-		IndexTankClient client = new IndexTankClient("http://:GwWoDRbSkWaKIj@dhyja.api.searchify.com");
-		return client.getIndex("sfdc_index");
+		IndexTankClient client = new IndexTankClient(System.getenv(SEARCHIFY_PRIVATE_URL));
+		return client.getIndex(System.getenv(SEARCHIFY_INDEX_NAME));
 	}
 	
 	public boolean batchIndexing() {
@@ -77,38 +88,16 @@ public class SearchService {
 		}
 	}
 	
-	public boolean batchIndexingOld() {
+	public SearchResults query(String query) {
 		Index index = initIndex();
-		List<Document> documents = new ArrayList<Document>();
-
-		// Document is built with:
-		// - String docId
-		// - Map<String, String> fields
-		// - Map<Integer, Float> variables 
-		// - Map<String, String> facetingCategories
-		
-		Map<String, String> fields1 = new HashMap<String, String>();
-		fields1.put("text", "document 1 text disema test nik");
-		Document document1 = new Document("1", fields1, null, null);
-		documents.add(document1); 
-
-		Map<String, String> fields2 = new HashMap<String, String>();
-		fields2.put("text", "document 2 text");
-		Map<Integer, Float> variables2 = new HashMap<Integer, Float>();
-		variables2.put(1, 0.4f);
-		Document document2 = new Document("2", fields2, variables2, null);
-		documents.add(document2); 
-
 		try {
-			BatchResults results = index.addDocuments(documents);
-			logger.error("SearchService.batchIndexing: results : " + results.getFailedDocuments());
+			return index.search(Query.forString(query));
 		} catch (IOException e) {
-			logger.error("SearchService.batchIndexing: IO error", e);
-		} catch (IndexDoesNotExistException e) {
-			logger.error("SearchService.batchIndexing: IndexDoesNotExist error", e);
+			logger.error("SearchService.query: IO error", e);
+		} catch (InvalidSyntaxException e) {
+			logger.error("SearchService.query: InvalidSyntaxException error", e);
 		}
-		
-		return true;
+//		    System.out.println("doc id: " + document.get("docid"));
+		return null;
 	}
-	
 }
