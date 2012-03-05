@@ -25,10 +25,10 @@ public class Author implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
 
-	@Column(name="First Name")
+	@Column(name="FirstName")
 	private String firstName;
 
-	@Column(name="Last Name")
+	@Column(name="LastName")
 	private String lastName;
 
 	@Column(name="Address")
