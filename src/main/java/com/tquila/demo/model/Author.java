@@ -5,12 +5,14 @@ package com.tquila.demo.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author nicolatassini
@@ -39,6 +41,9 @@ public class Author implements Serializable {
 
 	@Column(name="Country")
 	private String country;
+	
+	@OneToMany()
+	private List<Book> books;
 	
 	protected java.util.Calendar createdDate;
 
@@ -137,6 +142,14 @@ public class Author implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 }
