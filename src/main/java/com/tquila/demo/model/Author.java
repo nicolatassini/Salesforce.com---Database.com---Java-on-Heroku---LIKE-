@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Author implements Serializable {
 	
-	private static final long serialVersionUID = -1308795024262635690L;
+	private static final long serialVersionUID = -3245535388898661559L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,7 +42,7 @@ public class Author implements Serializable {
 	@Column(name="Country")
 	private String country;
 	
-	@OneToMany()
+	@OneToMany(mappedBy="author")
 	private List<Book> books;
 	
 	protected java.util.Calendar createdDate;

@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Book implements Serializable {
 	
+	private static final long serialVersionUID = -7019351706340520798L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
