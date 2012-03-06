@@ -26,20 +26,21 @@ public class Tweet implements Serializable {
 	private static final long serialVersionUID = -7690989691789008517L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
 	@Column
-	@CustomField(label="Tweet", length=140, type=FieldType.Text)
+	@CustomField(label = "Tweet", length = 140, type = FieldType.Text)
 	private String tweet;
 
 	@Column
-	@CustomField(label="Posted On", type=FieldType.DateTime)
+	@CustomField(label = "Posted On", type = FieldType.DateTime)
 	private Calendar postedOn;
 	
 	@ManyToOne
-	@CustomField(label="Author", type=FieldType.MasterDetail)
-	private User author;
+	@CustomField(label = "Author", type = FieldType.MasterDetail)
+	private TwitterUser author;
+	
 
 	public Tweet() {
 		super();
@@ -69,11 +70,11 @@ public class Tweet implements Serializable {
 		this.postedOn = postedOn;
 	}
 
-	public User getAuthor() {
+	public TwitterUser getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(TwitterUser author) {
 		this.author = author;
 	}
 	
