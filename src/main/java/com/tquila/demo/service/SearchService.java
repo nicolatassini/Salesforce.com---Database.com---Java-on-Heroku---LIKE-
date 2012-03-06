@@ -21,8 +21,9 @@ import com.flaptor.indextank.apiclient.IndexTankClient.Document;
 import com.flaptor.indextank.apiclient.IndexTankClient.Query;
 import com.flaptor.indextank.apiclient.IndexTankClient.SearchResults;
 import com.flaptor.indextank.apiclient.InvalidSyntaxException;
-import com.tquila.demo.dao.PersonDao;
-import com.tquila.demo.model.Person;
+import com.tquila.demo.dao.TweetDao;
+import com.tquila.demo.model.Tweet;
+import com.tquila.demo.model.TwitterUser;
 
 /**
  * @author nicolatassini
@@ -36,7 +37,8 @@ public class SearchService {
 	/*
 	 * next steps:
 	 * D0. usate le var di sistema
-	 * 1. carica dati e rivedi il modello DB
+	 * D01. rivedi il modello DB
+	 * 1. carica dati
 	 * 2. aggiorna relazioni orm e indicizzazione
 	 * 3. API Restful per ricercare
 	 * 4. Plugin JQuery per ricercare (dentro anche autocompleter)
@@ -49,7 +51,7 @@ public class SearchService {
 	private static final String SEARCHIFY_INDEX_NAME = "SEARCHIFY_INDEX_NAME";
 	
 	@Autowired
-	private PersonDao personDao;
+	private TweetDao tweetDao;
 	
 	public Index initIndex() {
 		IndexTankClient client = new IndexTankClient(System.getenv(SEARCHIFY_PRIVATE_URL));
@@ -62,17 +64,18 @@ public class SearchService {
 		Map<String, String> fields;
 		Document document;
 		
-		for(Person person : personDao.getPeople()) {
+		for(Tweet tweet : tweetDao.getPeople()) {
 			fields = new HashMap<String, String>();
-			fields.put("text", person.getFirstName() + " " + person.getLastName());
-			fields.put("firstname", person.getFirstName());
-			fields.put("lastname", person.getLastName());
-			fields.put("address", person.getAddress());
-			fields.put("city", person.getCity());
-			fields.put("country", person.getCountry());
-			fields.put("timestamp", "" + (person.getCreatedDate().getTimeInMillis() / 1000L));
+			TwitterUser author = tweet.getAuthor();
 			
-			document = new Document(person.getId(), fields, null, null);
+			fields.put("text", tweet.getTweet() + " " + author.getFirstName() + " " + author.getLastName() + " " + author.getTwitterID());
+			fields.put("firstname", author.getFirstName());
+			fields.put("lastname", author.getLastName());
+			fields.put("twitterID", author.getTwitterID());
+			fields.put("tweet", tweet.getTweet());
+			fields.put("timestamp", "" + (tweet.getPostedOn().getTimeInMillis() / 1000L));
+			
+			document = new Document(tweet.getId(), fields, null, null);
 			documents.add(document);
 		}
 		

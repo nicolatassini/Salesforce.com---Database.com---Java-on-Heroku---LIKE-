@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PersonDaoTest {
 
 	@Autowired
-	private PersonDao personDao;
+	private TweetDao personDao;
 
 	@Autowired
 	private DataInitializer dataInitializer;

@@ -2,7 +2,7 @@ package com.tquila.demo.controller;
 
 import java.util.List;
 
-import com.tquila.demo.dao.PersonDao;
+import com.tquila.demo.dao.TweetDao;
 import com.tquila.demo.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class PersonController {
 	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
 	@Autowired
-	private PersonDao personDao;
+	private TweetDao personDao;
 	
 	@RequestMapping(method=RequestMethod.GET,value="edit")
 	public ModelAndView editPerson(@RequestParam(value="id",required=false) String id) {		
