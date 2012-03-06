@@ -64,7 +64,7 @@ public class SearchService {
 		Map<String, String> fields;
 		Document document;
 		
-		for(Tweet tweet : tweetDao.getPeople()) {
+		for(Tweet tweet : tweetDao.getTweets()) {
 			fields = new HashMap<String, String>();
 			TwitterUser author = tweet.getAuthor();
 			

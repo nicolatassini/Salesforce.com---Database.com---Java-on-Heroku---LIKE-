@@ -6,9 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.tquila.demo.model.Person;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.tquila.demo.model.TwitterUser;
 
 @Component
 @Scope("prototype")
@@ -19,23 +20,24 @@ public class DataInitializer {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public List<String> people = new ArrayList<String>();
+	public List<String> twitterUsers = new ArrayList<String>();
 
 	public void initData() {
-		people.clear();// clear out the previous list of people
-		addPerson("Jim", "Smith");
-		addPerson("Tina", "Marsh");
-		addPerson("Steve", "Blair");
+		twitterUsers.clear();// clear out the previous list of people
+		addTwitterUser("jin", "Jim", "Smith");
+		addTwitterUser("tina", "Tina", "Marsh");
+		addTwitterUser("steve", "Steve", "Blair");
 		entityManager.flush();
 		entityManager.clear();
 	}
 
-	public void addPerson(String firstName, String lastName) {
-		Person p = new Person();
-		p.setFirstName(firstName);
-		p.setLastName(lastName);
-		entityManager.persist(p);
-		people.add(p.getId());
+	public void addTwitterUser(String twitterID, String firstName, String lastName) {
+		TwitterUser u = new TwitterUser();
+		u.setTwitterID(twitterID);
+		u.setFirstName(firstName);
+		u.setLastName(lastName);
+		entityManager.persist(u);
+		twitterUsers.add(u.getId());
 	}
 	
 	public EntityManager getEntityManager() {
