@@ -82,7 +82,8 @@ public class SearchService {
 		
 		try {
 			BatchResults results = index.addDocuments(documents);
-			logger.info("SearchService.batchIndexing: results : " + results.getFailedDocuments());
+			logger.info("SearchService.batchIndexing: results: " + results.getFailedDocuments());
+			logger.info("SearchService.batchIndexing: tweets: " + tweets.size() + " docs: " + documents.size());
 			return documents.size();
 		} catch (IOException e) {
 			logger.error("SearchService.batchIndexing: IO error", e);
