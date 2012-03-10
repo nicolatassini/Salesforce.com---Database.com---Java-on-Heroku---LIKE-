@@ -43,7 +43,7 @@ public class SearchController {
  		
  		SearchResults results = searchService.query(query);
  		for(Map<String, Object> document : results.results) {
- 			logger.info("doc id: " + document.get("docid"));
+ 			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
  		}
  		
 		return "home";
