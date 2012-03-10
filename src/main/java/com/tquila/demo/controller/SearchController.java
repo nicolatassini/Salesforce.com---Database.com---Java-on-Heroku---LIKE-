@@ -3,6 +3,8 @@
  */
 package com.tquila.demo.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.flaptor.indextank.apiclient.IndexTankClient.SearchResults;
 import com.tquila.demo.service.SearchService;
 
 /**
@@ -33,5 +37,16 @@ public class SearchController {
 		return "home";
 	}
 
+	@RequestMapping(method=RequestMethod.GET, value="/query")
+	public String query(@RequestParam(value="q",required=true) String query) {		
+ 		logger.info("Query: " + query);
+ 		
+ 		SearchResults results = searchService.query(query);
+ 		for(Map<String, Object> document : results.results) {
+ 			logger.info("doc id: " + document.get("docid"));
+ 		}
+ 		
+		return "home";
+	}
 	
 }

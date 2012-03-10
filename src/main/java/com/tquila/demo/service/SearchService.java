@@ -98,9 +98,9 @@ public class SearchService {
 		Index index = initIndex();
 		try {
 			return index.search(Query.forString(query));
-		} catch (IOException e) {
+		} catch(IOException e) {
 			logger.error("SearchService.query: IO error", e);
-		} catch (InvalidSyntaxException e) {
+		} catch(InvalidSyntaxException e) {
 			logger.error("SearchService.query: InvalidSyntaxException error", e);
 		}
 //		    System.out.println("doc id: " + document.get("docid"));
