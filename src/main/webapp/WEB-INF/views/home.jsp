@@ -6,11 +6,11 @@
 </head>
 <body>
 <h1>
-	Hello world! - 
+	SFDC Heroku Java Search Engine
 </h1>
 ${controllerMessage}<br/>
 <br/>
 <br/>
-<a href="person/list">Go to the person list</a>
+<a href="/">Home</a>
 </body>
 </html>
