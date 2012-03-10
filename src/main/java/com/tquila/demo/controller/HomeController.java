@@ -18,9 +18,6 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@Autowired
-	private SearchService searchService;
-
 	/**
 	 * Selects the home page and populates the model with a message
 	 */
@@ -32,12 +29,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/indexing", method = RequestMethod.GET)
-	public String indexing(Model model) {
-		searchService.batchIndexing();
-		model.addAttribute("controllerMessage",
-				"Indexed!!!");
-		return "home";
-	}
-
 }

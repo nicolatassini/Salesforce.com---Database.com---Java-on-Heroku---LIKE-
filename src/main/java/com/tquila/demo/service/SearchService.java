@@ -38,8 +38,8 @@ public class SearchService {
 	 * next steps:
 	 * D0. usate le var di sistema
 	 * D01. rivedi il modello DB
-	 * 1. carica dati
-	 * 2. aggiorna relazioni orm e indicizzazione
+	 * D1. carica dati
+	 * D2. aggiorna relazioni orm e indicizzazione
 	 * 3. API Restful per ricercare
 	 * 4. Plugin JQuery per ricercare (dentro anche autocompleter)
 	 * 5. Applica plugin pagina Java
@@ -58,17 +58,18 @@ public class SearchService {
 		return client.getIndex(System.getenv(SEARCHIFY_INDEX_NAME));
 	}
 	
-	public boolean batchIndexing() {
+	public Integer batchIndexing() {
 		Index index = initIndex();
 		List<Document> documents = new ArrayList<Document>();
 		Map<String, String> fields;
 		Document document;
 		
-		for(Tweet tweet : tweetDao.getTweets()) {
+		List<Tweet> tweets = tweetDao.getTweets();
+		for(Tweet tweet : tweets) {
 			fields = new HashMap<String, String>();
 			TwitterUser author = tweet.getAuthor();
 			
-			fields.put("text", tweet.getTweet() + " " + author.getFirstName() + " " + author.getLastName() + " " + author.getTwitterID());
+			fields.put("text", tweet.getTweet() + " " + author.getTwitterID());
 			fields.put("firstname", author.getFirstName());
 			fields.put("lastname", author.getLastName());
 			fields.put("twitterID", author.getTwitterID());
@@ -82,13 +83,13 @@ public class SearchService {
 		try {
 			BatchResults results = index.addDocuments(documents);
 			logger.info("SearchService.batchIndexing: results : " + results.getFailedDocuments());
-			return true;
+			return documents.size();
 		} catch (IOException e) {
 			logger.error("SearchService.batchIndexing: IO error", e);
-			return false;
+			return 0;
 		} catch (IndexDoesNotExistException e) {
 			logger.error("SearchService.batchIndexing: IndexDoesNotExist error", e);
-			return false;
+			return 0;
 		}
 	}
 	
