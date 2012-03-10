@@ -11,6 +11,6 @@
 ${controllerMessage}<br/>
 <br/>
 <br/>
-<a href="/">Home</a>
+<a href="/">Home</a> | <a href="/search/index">Index</a>
 </body>
 </html>

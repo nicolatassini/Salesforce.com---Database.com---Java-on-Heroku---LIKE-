@@ -26,7 +26,7 @@ public class SearchController {
 	@Autowired
 	private SearchService searchService;
 
-	@RequestMapping(value = "/indexing", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String indexing(Model model) {
 		Integer indexedDocNumber = searchService.batchIndexing();
 		model.addAttribute("controllerMessage", "Indexed " + indexedDocNumber + " documents");
