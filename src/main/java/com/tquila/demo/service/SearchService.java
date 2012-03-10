@@ -97,7 +97,9 @@ public class SearchService {
 	public SearchResults query(String query) {
 		Index index = initIndex();
 		try {
-			return index.search(Query.forString(query));
+			return index.search(Query.forString(query)
+						.withSnippetFields("text") 
+	                    .withFetchFields("tweet", "timestamp", "firstname", "lastname", "twitterID"));
 		} catch(IOException e) {
 			logger.error("SearchService.query: IO error", e);
 		} catch(InvalidSyntaxException e) {
