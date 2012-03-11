@@ -26,14 +26,20 @@
 
 <c:if test="${results != null}">
 	Total results: <b>${totalResults}</b><br/>
-
-	<c:forEach var="result" items="${results}">
+	
+	<table>
+		<tr>
+			<th>Details</th>
+			<th>Tweet</th>
+		</tr>
+		<c:forEach var="result" items="${results}">
         <tr>
-          <td>${result.sfid}</td>
+          <td><a href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
           <td>${result.tweet}</td>
         </tr>
       </c:forEach>
-
+	</table>
+	
 </c:if>
 
 <br/>
