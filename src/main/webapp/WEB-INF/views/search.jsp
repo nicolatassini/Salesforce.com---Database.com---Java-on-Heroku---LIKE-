@@ -14,10 +14,10 @@
 	Page Size: 
 	<select name="n">
 		<option value="10">10</option>
-		<option value="10">20</option>
-		<option value="10">50</option>
-		<option value="10">100</option>
-		<option value="10">200</option>
+		<option value="20">20</option>
+		<option value="50">50</option>
+		<option value="100">100</option>
+		<option value="200">200</option>
 	</select>
 	<br/>
 	<input type="hidden" name="o" value="0" />
@@ -34,7 +34,7 @@
 		</tr>
 		<c:forEach var="result" items="${results}">
         <tr>
-          <td><a href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
+          <td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
           <td>${result.tweet}</td>
         </tr>
       </c:forEach>
