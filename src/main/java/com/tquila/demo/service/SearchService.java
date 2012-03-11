@@ -94,10 +94,12 @@ public class SearchService {
 		}
 	}
 	
-	public SearchResults query(String query) {
+	public SearchResults query(String query, Integer offset, Integer numberOfResults) {
 		Index index = initIndex();
 		try {
 			return index.search(Query.forString(query)
+						.withStart(offset)
+						.withLength(numberOfResults)
 						.withSnippetFields("text") 
 	                    .withFetchFields("tweet", "timestamp", "firstname", "lastname", "twitterID"));
 		} catch(IOException e) {
@@ -105,7 +107,6 @@ public class SearchService {
 		} catch(InvalidSyntaxException e) {
 			logger.error("SearchService.query: InvalidSyntaxException error", e);
 		}
-//		    System.out.println("doc id: " + document.get("docid"));
 		return null;
 	}
 }

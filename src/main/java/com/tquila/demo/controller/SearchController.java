@@ -38,10 +38,12 @@ public class SearchController {
 	}
 
 	@RequestMapping(method=RequestMethod.GET, value="/query")
-	public String query(@RequestParam(value="q",required=true) String query) {		
+	public String query(@RequestParam(value="q",required=true) String query,
+			@RequestParam(value="o",required=true) Integer offset,
+			@RequestParam(value="n",required=true) Integer numberOfResults) {		
  		logger.info("Query: " + query);
  		
- 		SearchResults results = searchService.query(query);
+ 		SearchResults results = searchService.query(query, offset, numberOfResults);
  		for(Map<String, Object> document : results.results) {
  			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
  		}
