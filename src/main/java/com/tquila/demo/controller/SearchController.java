@@ -53,6 +53,8 @@ public class SearchController {
  			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
  		}
  		
+ 		logger.info("Total Results: " + results.matches);
+ 		
 		return "home";
 	}
 	
