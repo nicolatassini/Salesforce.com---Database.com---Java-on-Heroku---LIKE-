@@ -4,7 +4,6 @@
 package com.tquila.demo.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,11 +46,15 @@ public class SearchController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST, value="/query")
-	public ModelAndView query(@RequestParam(value="q",required=true) String query,
-			@RequestParam(value="o",required=true) Integer offset,
-			@RequestParam(value="n",required=true) Integer numberOfResults) {		
-		ModelAndView mav = new ModelAndView();		
+	public ModelAndView query(@RequestParam(value="q", required=true) String query,
+			@RequestParam(value="o", required=true) Integer offset,
+			@RequestParam(value="n", required=true) Integer numberOfResults) {		
+		ModelAndView mav = new ModelAndView();
  		mav.setViewName("search");
+ 		
+ 		mav.addObject("q", query);
+ 		mav.addObject("o", offset);
+ 		mav.addObject("n", numberOfResults);
 		
  		SearchResults results = searchService.query(query, offset, numberOfResults);
  		mav.addObject("totalResults", results.matches);
@@ -64,6 +67,9 @@ public class SearchController {
  			resultList.add(tweetResult);
  		}
  		mav.addObject("results", resultList);
+ 		
+ 		mav.addObject("hasPrevious", offset > 0);
+ 		mav.addObject("hasNext", (offset+1)*numberOfResults < results.matches);
  		
  		return mav;
 	}
