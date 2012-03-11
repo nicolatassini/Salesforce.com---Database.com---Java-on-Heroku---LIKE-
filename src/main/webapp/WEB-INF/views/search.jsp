@@ -27,8 +27,17 @@
 </form> 
 
 <c:if test="${results != null}">
-	Total results: <b>${totalResults}</b><br/>
+	Total results: <b>${totalResults}</b>
 	
+	<c:if test="${hasPrevious}">
+		<a target="_blank" href="">Previous <</a>
+	</c:if>
+	<c:if test="${hasNext}">
+		<a target="_blank" href="">> Next</a>
+	</c:if>
+
+	
+	<br/>
 	<table>
 		<tr>
 			<th>Details</th>
