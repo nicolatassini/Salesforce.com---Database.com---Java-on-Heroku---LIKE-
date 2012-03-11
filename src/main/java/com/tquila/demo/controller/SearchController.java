@@ -71,6 +71,18 @@ public class SearchController {
 	public class TweetResult {
 		public String sfid;
 		public String tweet;
+		public String getSfid() {
+			return sfid;
+		}
+		public void setSfid(String sfid) {
+			this.sfid = sfid;
+		}
+		public String getTweet() {
+			return tweet;
+		}
+		public void setTweet(String tweet) {
+			this.tweet = tweet;
+		}
 	}
 	
 }
