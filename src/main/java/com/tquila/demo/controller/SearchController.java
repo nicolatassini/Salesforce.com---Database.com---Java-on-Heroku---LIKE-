@@ -36,8 +36,13 @@ public class SearchController {
 		model.addAttribute("controllerMessage", "Indexed " + indexedDocNumber + " documents");
 		return "home";
 	}
+	
+	@RequestMapping(method=RequestMethod.GET,value="/query")
+	public String search() {		
+		return "search";
+	}
 
-	@RequestMapping(method=RequestMethod.GET, value="/query")
+	@RequestMapping(method=RequestMethod.POST, value="/query")
 	public String query(@RequestParam(value="q",required=true) String query,
 			@RequestParam(value="o",required=true) Integer offset,
 			@RequestParam(value="n",required=true) Integer numberOfResults) {		
