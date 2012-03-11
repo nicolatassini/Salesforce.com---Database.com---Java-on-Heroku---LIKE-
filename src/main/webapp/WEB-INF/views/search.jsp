@@ -23,7 +23,7 @@
 </form> 
 
 <c:if test="${results != null}">
-Total results: <b>${results.matches}</b>
+Total results: <b>${totalResults}</b>
 </c:if>
 
 <br/>

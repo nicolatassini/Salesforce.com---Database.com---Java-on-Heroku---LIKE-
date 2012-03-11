@@ -53,11 +53,10 @@ public class SearchController {
 		logger.info("Query: " + query);
  		SearchResults results = searchService.query(query, offset, numberOfResults);
  		mav.addObject("results", results);
+ 		mav.addObject("totalResults", results.matches);
  		for(Map<String, Object> document : results.results) {
  			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
  		}
- 		
- 		logger.info("Total Results: " + results.matches);
  		
  		return mav;
 	}
