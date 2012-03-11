@@ -3,7 +3,9 @@
  */
 package com.tquila.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -54,14 +56,21 @@ public class SearchController {
  		SearchResults results = searchService.query(query, offset, numberOfResults);
  		mav.addObject("totalResults", results.matches);
  		
- 		Map<String, String> resultsMap = new HashMap<String, String>();
+ 		List<TweetResult> resultList = new ArrayList<TweetResult>();
  		for(Map<String, Object> document : results.results) {
- 			resultsMap.put("sfid", "" + document.get("docid"));
- 			resultsMap.put("tweet", "" + document.get("tweet"));
+ 			TweetResult tweetResult = new TweetResult();
+ 			tweetResult.sfid = "" + document.get("docid");
+ 			tweetResult.tweet = "" + document.get("tweet");
+ 			resultList.add(tweetResult);
  		}
- 		mav.addObject("results", resultsMap);
+ 		mav.addObject("results", resultList);
  		
  		return mav;
+	}
+	
+	public class TweetResult {
+		public String sfid;
+		public String tweet;
 	}
 	
 }
