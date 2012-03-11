@@ -3,6 +3,14 @@
 <html>
 <head>
 	<title>Home</title>
+	<script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js" ></script>
+	<script type="text/javascript">
+		function changePage(_num) {
+			_prevVal = $('#offsetField').val();
+			$('#offsetField').val(_prevVal + _num);
+			$('#submitButton').click();
+		}
+	</script>
 </head>
 <body>
 <h1>
@@ -22,20 +30,19 @@
 		<option value="1000" <c:if test="${n != null && n == 1000}">selected="selected" </c:if> >1000</option>
 	</select>
 	<br/>
-	<input type="hidden" name="o" value="0" />
-	<input type="submit" name="Submit" value="Submit" />
+	<input type="hidden" name="o" id="offsetField" <c:if test="${o != null}">value="${o}"</c:if> />
+	<input type="submit" id="submitButton" name="Submit" value="Submit" />
 </form> 
 
 <c:if test="${results != null}">
 	Total results: <b>${totalResults}</b>
 	
 	<c:if test="${hasPrevious}">
-		<a target="_blank" href="">Previous <</a>
+		<a href="#" onclick="javascript:return changePage(-1);" >Previous <</a>
 	</c:if>
 	<c:if test="${hasNext}">
-		<a target="_blank" href="">> Next</a>
+		<a href="#" onclick="javascript:return changePage(1);" >> Next</a>
 	</c:if>
-
 	
 	<br/>
 	<table>

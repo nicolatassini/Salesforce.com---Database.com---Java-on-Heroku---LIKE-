@@ -41,8 +41,11 @@ public class SearchController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET,value="/query")
-	public String search() {		
-		return "search";
+	public ModelAndView search() {
+		ModelAndView mav = new ModelAndView();
+ 		mav.setViewName("search");
+ 		mav.addObject("o", "0");
+		return mav;
 	}
 
 	@RequestMapping(method=RequestMethod.POST, value="/query")
