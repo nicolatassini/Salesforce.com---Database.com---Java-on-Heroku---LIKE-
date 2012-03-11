@@ -55,9 +55,11 @@ public class SearchController {
 		ModelAndView mav = new ModelAndView();
  		mav.setViewName("search");
  		
+ 		/*
  		if(query == null || query.length() == 0) {
  			query = "*";
  		}
+ 		*/
  		
  		mav.addObject("q", query);
  		mav.addObject("o", offset);
@@ -72,7 +74,7 @@ public class SearchController {
  			TweetResult tweetResult = new TweetResult();
  			tweetResult.sfid = "" + document.get("docid");
  			tweetResult.tweet = "" + document.get("tweet");
- 			tweetResult.row = ++base;
+ 			tweetResult.row = base++;
  			resultList.add(tweetResult);
  		}
  		mav.addObject("results", resultList);
