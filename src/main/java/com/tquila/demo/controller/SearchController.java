@@ -62,12 +62,12 @@ public class SearchController {
  		mav.addObject("q", query);
  		mav.addObject("o", offset);
  		mav.addObject("n", numberOfResults);
+ 		Integer base = offset * numberOfResults;
 		
- 		SearchResults results = searchService.query(query, offset, numberOfResults);
+ 		SearchResults results = searchService.query(query, offset, base);
  		mav.addObject("totalResults", results.matches);
  		
  		List<TweetResult> resultList = new ArrayList<TweetResult>();
- 		Integer base = offset * numberOfResults;
  		for(Map<String, Object> document : results.results) {
  			TweetResult tweetResult = new TweetResult();
  			tweetResult.sfid = "" + document.get("docid");
