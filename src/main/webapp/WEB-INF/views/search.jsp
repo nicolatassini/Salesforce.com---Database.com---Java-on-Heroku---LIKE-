@@ -6,8 +6,8 @@
 	<script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js" ></script>
 	<script type="text/javascript">
 		function changePage(_num) {
-			_prevVal = $('#offsetField').val();
-			$('#offsetField').val(_prevVal + _num);
+			_prevVal = parseInt($('#offsetField').val());
+			$('#offsetField').val(_prevVal + parseInt(_num));
 			$('#submitButton').click();
 		}
 	</script>
