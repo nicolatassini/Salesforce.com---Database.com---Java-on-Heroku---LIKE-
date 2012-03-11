@@ -52,6 +52,10 @@ public class SearchController {
 		ModelAndView mav = new ModelAndView();
  		mav.setViewName("search");
  		
+ 		if(query == null || query.length() == 0) {
+ 			query = "*";
+ 		}
+ 		
  		mav.addObject("q", query);
  		mav.addObject("o", offset);
  		mav.addObject("n", numberOfResults);

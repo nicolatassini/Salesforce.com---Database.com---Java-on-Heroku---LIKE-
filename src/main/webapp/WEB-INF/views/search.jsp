@@ -10,7 +10,7 @@
 </h1>
 
 <form submit="/search/query" method="POST" >
-	Search: <input type="text" name="q" /><br/>
+	Search: <input type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /><br/>
 	Page Size: 
 	<select name="n">
 		<option value="10">10</option>
