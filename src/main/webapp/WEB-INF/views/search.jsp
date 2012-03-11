@@ -52,8 +52,9 @@
 		</tr>
 		<c:forEach var="result" items="${results}">
         <tr>
-          <td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
-          <td>${result.tweet}</td>
+        	<td>${result.row}</td>
+        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
+        	<td>${result.tweet}</td>
         </tr>
       </c:forEach>
 	</table>

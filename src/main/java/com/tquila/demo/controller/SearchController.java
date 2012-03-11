@@ -67,10 +67,12 @@ public class SearchController {
  		mav.addObject("totalResults", results.matches);
  		
  		List<TweetResult> resultList = new ArrayList<TweetResult>();
+ 		Integer base = offset * numberOfResults;
  		for(Map<String, Object> document : results.results) {
  			TweetResult tweetResult = new TweetResult();
  			tweetResult.sfid = "" + document.get("docid");
  			tweetResult.tweet = "" + document.get("tweet");
+ 			tweetResult.row = ++base;
  			resultList.add(tweetResult);
  		}
  		mav.addObject("results", resultList);
@@ -82,8 +84,15 @@ public class SearchController {
 	}
 	
 	public class TweetResult {
+		public Integer row;
 		public String sfid;
 		public String tweet;
+		public Integer getRow() {
+			return row;
+		}
+		public void setRow(Integer row) {
+			this.row = row;
+		}
 		public String getSfid() {
 			return sfid;
 		}
