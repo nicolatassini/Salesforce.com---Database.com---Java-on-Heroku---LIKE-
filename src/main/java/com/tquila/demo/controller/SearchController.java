@@ -54,7 +54,6 @@ public class SearchController {
 			@RequestParam(value="n", required=true) Integer numberOfResults) {		
 		ModelAndView mav = new ModelAndView();
  		mav.setViewName("search");
- 		logger.info("Search: query " + query + " offset " + offset + " numberOfResults " + numberOfResults);
  		
  		if(query == null || query.length() == 0) {
  			query = "*";
@@ -64,7 +63,8 @@ public class SearchController {
  		mav.addObject("n", numberOfResults);
  		Integer base = offset * numberOfResults;
 		
- 		SearchResults results = searchService.query(query, offset, base);
+ 		logger.info("Search: query " + query + " offset " + offset + " numberOfResults " + numberOfResults + " base " + base);
+ 		SearchResults results = searchService.query(query, base, numberOfResults);
  		mav.addObject("totalResults", results.matches);
  		
  		List<TweetResult> resultList = new ArrayList<TweetResult>();
