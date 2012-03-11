@@ -3,6 +3,7 @@
  */
 package com.tquila.demo.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -50,13 +51,15 @@ public class SearchController {
 		ModelAndView mav = new ModelAndView();		
  		mav.setViewName("search");
 		
-		logger.info("Query: " + query);
  		SearchResults results = searchService.query(query, offset, numberOfResults);
- 		mav.addObject("results", results);
  		mav.addObject("totalResults", results.matches);
+ 		
+ 		Map<String, String> resultsMap = new HashMap<String, String>();
  		for(Map<String, Object> document : results.results) {
- 			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
+ 			resultsMap.put("sfid", "" + document.get("docid"));
+ 			resultsMap.put("tweet", "" + document.get("tweet"));
  		}
+ 		mav.addObject("results", resultsMap);
  		
  		return mav;
 	}

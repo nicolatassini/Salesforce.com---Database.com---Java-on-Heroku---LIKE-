@@ -25,7 +25,15 @@
 </form> 
 
 <c:if test="${results != null}">
-Total results: <b>${totalResults}</b>
+	Total results: <b>${totalResults}</b><br/>
+
+	<c:forEach var="result" items="${results}">
+        <tr>
+          <td>${result.sfid}</td>
+          <td>${result.tweet}</td>
+        </tr>
+      </c:forEach>
+
 </c:if>
 
 <br/>
