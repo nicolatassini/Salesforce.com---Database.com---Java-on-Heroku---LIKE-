@@ -54,13 +54,11 @@ public class SearchController {
 			@RequestParam(value="n", required=true) Integer numberOfResults) {		
 		ModelAndView mav = new ModelAndView();
  		mav.setViewName("search");
+ 		logger.info("Search: query " + query + " offset " + offset + " numberOfResults " + numberOfResults);
  		
- 		/*
  		if(query == null || query.length() == 0) {
  			query = "*";
  		}
- 		*/
- 		
  		mav.addObject("q", query);
  		mav.addObject("o", offset);
  		mav.addObject("n", numberOfResults);
@@ -74,7 +72,7 @@ public class SearchController {
  			TweetResult tweetResult = new TweetResult();
  			tweetResult.sfid = "" + document.get("docid");
  			tweetResult.tweet = "" + document.get("tweet");
- 			tweetResult.row = base++;
+ 			tweetResult.row = ++base;
  			resultList.add(tweetResult);
  		}
  		mav.addObject("results", resultList);
