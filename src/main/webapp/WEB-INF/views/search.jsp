@@ -11,13 +11,15 @@
 
 <form submit="/search/query" method="POST" >
 	Search: <input type="text" name="q" /><br/>
-	Page Size: <select name="n">
+	Page Size: 
+	<select name="n">
 		<option value="10">10</option>
 		<option value="10">20</option>
 		<option value="10">50</option>
 		<option value="10">100</option>
 		<option value="10">200</option>
-		</select>
+	</select>
+	<br/>
 	<input type="hidden" name="o" value="0" />
 	<input type="submit" name="Submit" value="Submit" />
 </form> 
