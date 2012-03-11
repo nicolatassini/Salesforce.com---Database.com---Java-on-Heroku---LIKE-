@@ -22,6 +22,10 @@
 	<input type="submit" name="Submit" value="Submit" />
 </form> 
 
+<c:if test="${results != null}">
+Total results: <b>${results.matches}</b>
+</c:if>
+
 <br/>
 <br/>
 <a href="/">Home</a> | <a href="/search/index">Index</a> | <a href="/search/query">Query</a>

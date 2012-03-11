@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.flaptor.indextank.apiclient.IndexTankClient.SearchResults;
 import com.tquila.demo.service.SearchService;
@@ -43,19 +44,22 @@ public class SearchController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST, value="/query")
-	public String query(@RequestParam(value="q",required=true) String query,
+	public ModelAndView query(@RequestParam(value="q",required=true) String query,
 			@RequestParam(value="o",required=true) Integer offset,
 			@RequestParam(value="n",required=true) Integer numberOfResults) {		
- 		logger.info("Query: " + query);
- 		
+		ModelAndView mav = new ModelAndView();		
+ 		mav.setViewName("search");
+		
+		logger.info("Query: " + query);
  		SearchResults results = searchService.query(query, offset, numberOfResults);
+ 		mav.addObject("results", results);
  		for(Map<String, Object> document : results.results) {
  			logger.info("doc id: " + document.get("docid") + " " + document.get("tweet"));
  		}
  		
  		logger.info("Total Results: " + results.matches);
  		
-		return "home";
+ 		return mav;
 	}
 	
 }
