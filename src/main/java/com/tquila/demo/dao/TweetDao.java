@@ -32,7 +32,7 @@ public class TweetDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Tweet> getTweets() {
-		return entityManager.createQuery("select t from Tweet t").getResultList();
+		return entityManager.createQuery("select t from Tweet t").setMaxResults(5000).getResultList();
 	}
 
 	@Transactional
