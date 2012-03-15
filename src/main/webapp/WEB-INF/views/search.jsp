@@ -5,10 +5,10 @@
 	<title>Home</title>
 	<script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js" ></script>
 
-	<script src='/resources/js/jquery-ui.min.js' type='text/javascript'></script>
-    <script src='/resources/js/jquery.indextank.ize.js' type='text/javascript'></script>
-    <script src='/resources/js/jquery.indextank.autocomplete.js' type='text/javascript'></script> 
-    <link href='/resources/css/jquery-ui.css' rel='stylesheet'/>
+	<script src="/resources/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="/resources/js/jquery.indextank.ize.js" type="text/javascript"></script>
+    <script src="/resources/js/jquery.indextank.autocomplete.js" type="text/javascript"></script> 
+    <link href="/resources/css/jquery-ui.css" rel="stylesheet"/>
     
 	<script type="text/javascript">
 		var publicApiUrl = "http://dhyja.api.searchify.com";
