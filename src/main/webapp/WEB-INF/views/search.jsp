@@ -4,7 +4,20 @@
 <head>
 	<title>Home</title>
 	<script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js" ></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js' type='text/javascript'></script>
+    <script src='https://raw.github.com/flaptor/indextank-jquery/master/jquery.indextank.ize.js' type='text/javascript'></script>
+    <script src='https://raw.github.com/flaptor/indextank-jquery/master/jquery.indextank.autocomplete.js' type='text/javascript'></script> 
+    <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/flick/jquery-ui.css' rel='stylesheet'/>
+    
 	<script type="text/javascript">
+		var publicApiUrl = "http://dhyja.api.searchify.com";
+        var indexName = "sfdc_index";
+        
+        $(function() {
+            $("#searchForm").indextank_Ize(publicApiUrl, indexName);
+            $("#searchInput").indextank_Autocomplete();
+        });
+        
 		function changePage(_num) {
 			_prevVal = parseInt($('#offsetField').val());
 			$('#offsetField').val(_prevVal + parseInt(_num));
@@ -17,8 +30,8 @@
 	SFDC Heroku Java Search Engine
 </h1>
 
-<form submit="/search/query" method="POST" >
-	Search: <input type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /><br/>
+<form submit="/search/query" method="POST" id="searchForm" >
+	Search: <input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /><br/>
 	Page Size: 
 	<select name="n">
 		<option value="10" <c:if test="${n != null && n == 10}">selected="selected" </c:if> >10</option>
