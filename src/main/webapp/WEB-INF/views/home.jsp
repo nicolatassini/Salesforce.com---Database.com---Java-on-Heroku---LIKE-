@@ -6,7 +6,7 @@
 	
 	<link href="/resources/css/home.css" rel="stylesheet" />
 </head>
-<body>
+<body class="textbasic" >
 	<h1 id="headerTitle">
 		salesforce.com database.com Heroku Java Search Engine
 	</h1>

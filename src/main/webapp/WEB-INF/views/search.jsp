@@ -55,8 +55,8 @@
 
 	<div id="inputContainer">
 		<form submit="/search/query" method="POST" id="searchForm" >
-			<input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /> 
-			<select name="n" id="paginationInput">
+			<input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> class="textbasic" /> 
+			<select name="n" id="paginationInput" class="textbasic">
 				<option value="10" <c:if test="${n != null && n == 10}">selected="selected" </c:if> >10</option>
 				<option value="20" <c:if test="${n != null && n == 20}">selected="selected" </c:if> >20</option>
 				<option value="50" <c:if test="${n != null && n == 50}">selected="selected" </c:if> >50</option>
@@ -66,7 +66,7 @@
 				<option value="1000" <c:if test="${n != null && n == 1000}">selected="selected" </c:if> >1000</option>
 			</select>
 			<input type="hidden" name="o" id="offsetField" <c:if test="${o != null}">value="${o}"</c:if> />
-			<input type="submit" id="submitButton" name="Submit" value="SEARCH" />
+			<input type="submit" id="submitButton" name="Submit" value="SEARCH" class="textbasic" />
 		</form>
 	</div> 
 
