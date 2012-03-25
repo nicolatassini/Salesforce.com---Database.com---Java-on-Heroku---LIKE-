@@ -5,3 +5,6 @@
 #searchInput { width: 400px; }
 
 .dataTables_filter {display: none;}
+
+
+body {font-size: 20px; font-family: Arial, Helvetica;}
