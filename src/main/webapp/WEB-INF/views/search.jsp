@@ -25,6 +25,9 @@
         $(function() {
             $("#searchForm").indextank_Ize(publicApiUrl, indexName);
             $("#searchInput").indextank_Autocomplete();
+            
+            $('#paginationInput').change($('#offsetField').val(0));
+            
             $('#resultTable').dataTable({
 	        	"bPaginate": false,
 	        	"bLengthChange": false,
@@ -55,7 +58,7 @@
 	<div id="inputContainer">
 		<form submit="/search/query" method="POST" id="searchForm" >
 			<input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /> 
-			<select name="n">
+			<select name="n" id="paginationInput">
 				<option value="10" <c:if test="${n != null && n == 10}">selected="selected" </c:if> >10</option>
 				<option value="20" <c:if test="${n != null && n == 20}">selected="selected" </c:if> >20</option>
 				<option value="50" <c:if test="${n != null && n == 50}">selected="selected" </c:if> >50</option>

@@ -4,3 +4,4 @@
 #inputContainer { text-align: center; }
 #searchInput { width: 400px; }
 
+.dataTables_filter {display: none;}
