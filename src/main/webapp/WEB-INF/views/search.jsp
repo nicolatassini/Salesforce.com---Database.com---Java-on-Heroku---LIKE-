@@ -8,7 +8,9 @@
 	<script src="/resources/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/resources/js/jquery.indextank.ize.js" type="text/javascript"></script>
     <script src="/resources/js/jquery.indextank.autocomplete.js" type="text/javascript"></script> 
-    <link href="/resources/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="/resources/css/jquery-ui.css" rel="stylesheet" />
+    
+    <link href="/resources/css/home.css" rel="stylesheet" />
     
 	<script type="text/javascript">
 		var publicApiUrl = "http://dhyja.api.searchify.com";
@@ -30,6 +32,9 @@
 <h1>
 	SFDC Heroku Java Search Engine
 </h1>
+<div id="headerContainer">
+	<img src="/resources/img/header_img.png" />
+<div>
 
 <form submit="/search/query" method="POST" id="searchForm" >
 	Search: <input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /><br/>
