@@ -11,6 +11,7 @@
     <link href="/resources/css/jquery-ui.css" rel="stylesheet" />
     
     <script src="/resources/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <link href="/resources/css/jquery.dataTables.css" rel="stylesheet" />
     
     <link href="/resources/css/home.css" rel="stylesheet" />
     
