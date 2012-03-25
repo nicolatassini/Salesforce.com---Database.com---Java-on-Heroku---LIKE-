@@ -10,6 +10,8 @@
     <script src="/resources/js/jquery.indextank.autocomplete.js" type="text/javascript"></script> 
     <link href="/resources/css/jquery-ui.css" rel="stylesheet" />
     
+    <script src="/resources/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    
     <link href="/resources/css/home.css" rel="stylesheet" />
     
 	<script type="text/javascript">
@@ -19,6 +21,7 @@
         $(function() {
             $("#searchForm").indextank_Ize(publicApiUrl, indexName);
             $("#searchInput").indextank_Autocomplete();
+            $('#resultTable').dataTable();
         });
         
 		function changePage(_num) {
