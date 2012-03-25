@@ -23,9 +23,15 @@
         $(function() {
             $("#searchForm").indextank_Ize(publicApiUrl, indexName);
             $("#searchInput").indextank_Autocomplete();
-            $('#resultTable').dataTable();
-        });
-        
+            $('#resultTable').dataTable({
+	        	"bPaginate": false,
+	        	"bLengthChange": false,
+	        	"bFilter": true,
+	        	"bSort": false,
+	        	"bInfo": false,
+	        	"bAutoWidth": false
+	        });
+	        
 		function changePage(_num) {
 			_prevVal = parseInt($('#offsetField').val());
 			$('#offsetField').val(_prevVal + parseInt(_num));
