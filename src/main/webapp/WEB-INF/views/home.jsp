@@ -3,14 +3,20 @@
 <html>
 <head>
 	<title>Home</title>
+	
+	<link href="/resources/css/home.css" rel="stylesheet" />
 </head>
 <body>
-<h1>
-	SFDC Heroku Java Search Engine
-</h1>
-${controllerMessage}<br/>
-<br/>
-<br/>
-<a href="/">Home</a> | <a href="/search/index">Index</a> | <a href="/search/query">Query</a>
+	<h1 id="headerTitle">
+		salesforce.com database.com Heroku Java Search Engine
+	</h1>
+	<div id="headerContainer">
+		<a href="/">
+			<img src="/resources/img/header_img.png" />
+		</a>
+	</div>
+	${controllerMessage}
+	<br/>
+	<br/>
 </body>
 </html>
