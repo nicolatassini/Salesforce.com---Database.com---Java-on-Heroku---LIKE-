@@ -26,6 +26,7 @@
             
             $('#paginationInput').change($('#offsetField').val(0));
             
+            /*
             $('#resultTable').dataTable({
 	        	"bPaginate": false,
 	        	"bLengthChange": false,
@@ -34,6 +35,7 @@
 	        	"bInfo": false,
 	        	"bAutoWidth": false
 	        });
+	        */
 	    });
 	        
 		function changePage(_num) {
@@ -43,7 +45,7 @@
 		}
 	</script>
 </head>
-<body>
+<body class="textbasic" >
 	<h1 id="headerTitle">
 		salesforce.com database.com Heroku Java Search Engine
 	</h1>
