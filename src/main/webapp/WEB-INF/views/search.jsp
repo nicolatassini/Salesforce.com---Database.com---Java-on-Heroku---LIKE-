@@ -33,6 +33,7 @@
 	        	"bInfo": false,
 	        	"bAutoWidth": false
 	        });
+	    });
 	        
 		function changePage(_num) {
 			_prevVal = parseInt($('#offsetField').val());
