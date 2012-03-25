@@ -74,16 +74,17 @@
 	<table id="resultTable">
 		<thead>
 			<tr>
-				<th>Details</th>
+				<th>Number</th>
 				<th>Tweet</th>
+				<th>Details</th>
 			</tr>
 		</thead>
 		<c:forEach var="result" items="${results}">
 		<tbody>
 	        <tr>
 	        	<td>${result.row}</td>
-	        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
 	        	<td>${result.tweet}</td>
+	        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
 	        </tr>
 	    </tbody>
       </c:forEach>
