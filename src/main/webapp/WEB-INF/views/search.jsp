@@ -33,7 +33,9 @@
 		salesforce.com database.com Heroku Java Search Engine
 	</h1>
 	<div id="headerContainer">
-		<img src="/resources/img/header_img.png" />
+		<a href="/">
+			<img src="/resources/img/header_img.png" />
+		</a>
 	</div>
 
 	<div id="inputContainer">
@@ -64,24 +66,26 @@
 	</c:if>
 	
 	<br/>
-	<table>
-		<tr>
-			<th>Details</th>
-			<th>Tweet</th>
-		</tr>
+	<table id="resultTable">
+		<thead>
+			<tr>
+				<th>Details</th>
+				<th>Tweet</th>
+			</tr>
+		</thead>
 		<c:forEach var="result" items="${results}">
-        <tr>
-        	<td>${result.row}</td>
-        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
-        	<td>${result.tweet}</td>
-        </tr>
+		<tbody>
+	        <tr>
+	        	<td>${result.row}</td>
+	        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
+	        	<td>${result.tweet}</td>
+	        </tr>
+	    </tbody>
       </c:forEach>
 	</table>
-	
 </c:if>
 
 <br/>
-<br/>
-<a href="/">Home</a> | <a href="/search/index">Index</a> | <a href="/search/query">Query</a>
+<a href="/search/index">Index</a>
 </body>
 </html>

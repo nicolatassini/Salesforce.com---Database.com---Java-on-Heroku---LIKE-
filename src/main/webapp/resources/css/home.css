@@ -1,5 +1,6 @@
 #headerTitle { display: none; }
 #headerContainer { text-align: center; }
+#headerContainer a { border: none; }
 #inputContainer { text-align: center; }
 #searchInput { width: 400px; }
 
