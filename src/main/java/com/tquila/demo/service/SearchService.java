@@ -44,6 +44,9 @@ public class SearchService {
 	 * 4. Plugin JQuery per ricercare (dentro anche autocompleter)
 	 * 5. Applica plugin pagina Java
 	 * 2. Applica plugin VF page / controller per fare la ricerca
+	 * 
+	 * GoogleForce style sulla UI
+	 * 
 	 */
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchService.class);

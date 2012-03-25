@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Sample controller for going to the home page with a message
@@ -19,10 +20,8 @@ public class HomeController {
 	 * Selects the home page and populates the model with a message
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
-		logger.info("Welcome home");
-		model.addAttribute("controllerMessage", "Wooo hooooooo");
-		return "home";
+	public ModelAndView home(Model model) {
+		return new ModelAndView("redirect:/search/query");
 	}
 	
 }
