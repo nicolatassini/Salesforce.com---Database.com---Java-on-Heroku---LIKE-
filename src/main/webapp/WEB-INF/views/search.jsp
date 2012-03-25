@@ -29,29 +29,29 @@
 	</script>
 </head>
 <body>
-<h1>
-	SFDC Heroku Java Search Engine
-</h1>
-<div id="headerContainer">
-	<img src="/resources/img/header_img.png" />
-<div>
+	<h1 id="headerTitle">
+		salesforce.com database.com Heroku Java Search Engine
+	</h1>
+	<div id="headerContainer">
+		<img src="/resources/img/header_img.png" />
+	</div>
 
-<form submit="/search/query" method="POST" id="searchForm" >
-	Search: <input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /><br/>
-	Page Size: 
-	<select name="n">
-		<option value="10" <c:if test="${n != null && n == 10}">selected="selected" </c:if> >10</option>
-		<option value="20" <c:if test="${n != null && n == 20}">selected="selected" </c:if> >20</option>
-		<option value="50" <c:if test="${n != null && n == 50}">selected="selected" </c:if> >50</option>
-		<option value="100" <c:if test="${n != null && n == 100}">selected="selected" </c:if> >100</option>
-		<option value="200" <c:if test="${n != null && n == 200}">selected="selected" </c:if> >200</option>
-		<option value="500" <c:if test="${n != null && n == 500}">selected="selected" </c:if> >500</option>
-		<option value="1000" <c:if test="${n != null && n == 1000}">selected="selected" </c:if> >1000</option>
-	</select>
-	<br/>
-	<input type="hidden" name="o" id="offsetField" <c:if test="${o != null}">value="${o}"</c:if> />
-	<input type="submit" id="submitButton" name="Submit" value="Submit" />
-</form> 
+	<div id="inputContainer">
+		<form submit="/search/query" method="POST" id="searchForm" >
+			<input id="searchInput" type="text" name="q" <c:if test="${q != null}">value="${q}"</c:if> /> 
+			<select name="n">
+				<option value="10" <c:if test="${n != null && n == 10}">selected="selected" </c:if> >10</option>
+				<option value="20" <c:if test="${n != null && n == 20}">selected="selected" </c:if> >20</option>
+				<option value="50" <c:if test="${n != null && n == 50}">selected="selected" </c:if> >50</option>
+				<option value="100" <c:if test="${n != null && n == 100}">selected="selected" </c:if> >100</option>
+				<option value="200" <c:if test="${n != null && n == 200}">selected="selected" </c:if> >200</option>
+				<option value="500" <c:if test="${n != null && n == 500}">selected="selected" </c:if> >500</option>
+				<option value="1000" <c:if test="${n != null && n == 1000}">selected="selected" </c:if> >1000</option>
+			</select>
+			<input type="hidden" name="o" id="offsetField" <c:if test="${o != null}">value="${o}"</c:if> />
+			<input type="submit" id="submitButton" name="Submit" value="SEARCH" />
+		</form>
+	</div> 
 
 <c:if test="${results != null}">
 	Total results: <b>${totalResults}</b>
