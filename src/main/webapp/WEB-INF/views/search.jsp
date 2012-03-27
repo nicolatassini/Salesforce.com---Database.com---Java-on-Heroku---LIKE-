@@ -24,7 +24,7 @@
             $("#searchForm").indextank_Ize(publicApiUrl, indexName);
             $("#searchInput").indextank_Autocomplete();
             
-            $('#paginationInput').change($('#offsetField').val(0));
+            //$('#paginationInput').change($('#offsetField').val(0));
             
             /*
             $('#resultTable').dataTable({

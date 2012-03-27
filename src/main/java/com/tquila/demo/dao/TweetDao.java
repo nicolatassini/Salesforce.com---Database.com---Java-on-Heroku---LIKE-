@@ -32,6 +32,7 @@ public class TweetDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Tweet> getTweets() {
+		// return entityManager.createQuery("select t from Tweet t order by t.lastUpdate DESC").setMaxResults(5000).getResultList();
 		return entityManager.createQuery("select t from Tweet t").setMaxResults(5000).getResultList();
 	}
 
