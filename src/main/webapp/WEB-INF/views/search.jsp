@@ -25,7 +25,7 @@
             $("#searchInput").indextank_Autocomplete();
             
             //$('#paginationInput').change($('#offsetField').val(0));
-            
+             
             /*
             $('#resultTable').dataTable({
 	        	"bPaginate": false,
