@@ -102,7 +102,7 @@
 		<tbody>
 	        <tr>
 	        	<td>${result.row}</td>
-	        	<td>${result.tweetUserID}</td>
+	        	<td class="tweetResult">${result.tweetUserID}</td>
 	        	<td class="tweetResult">${result.tweet}</td>
 	        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
 	        </tr>
