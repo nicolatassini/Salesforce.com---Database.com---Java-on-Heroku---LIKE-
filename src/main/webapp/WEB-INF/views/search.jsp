@@ -89,6 +89,8 @@
 	</c:if>
 	
 	<br/>
+	<br/>
+	<br/>
 	<table id="resultTable">
 		<thead>
 			<tr>
