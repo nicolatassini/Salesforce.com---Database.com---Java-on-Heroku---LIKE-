@@ -9,3 +9,6 @@
 
 .textbasic {font-size: 20px; font-family: Arial, Helvetica;}
 .highlight {color: #00F;}
+
+#resultTable { width: 100%; }
+#resultTable th { border-bottom: 1px solid black; }
