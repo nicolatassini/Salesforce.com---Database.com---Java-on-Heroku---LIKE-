@@ -72,6 +72,7 @@ public class SearchController {
  			TweetResult tweetResult = new TweetResult();
  			tweetResult.sfid = "" + document.get("docid");
  			tweetResult.tweet = "" + document.get("tweet");
+ 			tweetResult.tweetUserID = "" + document.get("twitterID");
  			tweetResult.row = ++base;
  			resultList.add(tweetResult);
  		}
@@ -87,6 +88,7 @@ public class SearchController {
 		public Integer row;
 		public String sfid;
 		public String tweet;
+		public String tweetUserID;
 		public Integer getRow() {
 			return row;
 		}
@@ -104,6 +106,12 @@ public class SearchController {
 		}
 		public void setTweet(String tweet) {
 			this.tweet = tweet;
+		}
+		public String getTweetUserID() {
+			return tweetUserID;
+		}
+		public void setTweetUserID(String tweetUserID) {
+			this.tweetUserID = tweetUserID;
 		}
 	}
 	
