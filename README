@@ -2,18 +2,12 @@
 Working Heroku Java/J2EE Salesforce App
 =======================================
 
-Basic integration between several frameworks, including:
-Spring MVC 3.0.6
-Hibernate ORM 4.2
-Salesforce Java SDK 
-Maven 3
-Jetty 7.4.5
-Heroku Cedar
+Build a full text search engine in Java deployed on Heroku 
+Indexing data from Salesforce.com
 
-Clone this project and build your own enterprise app fully integrated with Salesforce.
+Presented @SkillsMatter, London, March 29th 2012: "What, Why and How to build integrated solutions with salesforce.com through database.com"
 
-
-Live at: http://sharp-sword-8728.herokuapp.com/
+Live at: http://tquilasearch.herokuapp.com
 
 For comments and requests: https://twitter.com/#!/tquila_nik
 
