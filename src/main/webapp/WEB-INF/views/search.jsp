@@ -4,6 +4,7 @@
 <head>
 	<title>Home</title>
 	<script type="text/javascript" src="/resources/js/jquery-1.7.1.min.js" ></script>
+	<script type="text/javascript" src="/resources/js/jquery.highlight-3.yui.js" ></script>
 
 	<script src="/resources/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/resources/js/jquery.indextank.ize.js" type="text/javascript"></script>
@@ -26,6 +27,11 @@
             
             //$('#paginationInput').change($('#offsetField').val(0));
              
+             
+            <c:if test="${q != null}">
+            	$('td.tweetResult').highlight('${q}');
+            </c:if>
+            
             /*
             $('#resultTable').dataTable({
 	        	"bPaginate": false,
@@ -95,7 +101,7 @@
 		<tbody>
 	        <tr>
 	        	<td>${result.row}</td>
-	        	<td>${result.tweet}</td>
+	        	<td class="tweetResult">${result.tweet}</td>
 	        	<td><a target="_blank" href="https://na14.salesforce.com/${result.sfid}">Details</a></td>
 	        </tr>
 	    </tbody>
